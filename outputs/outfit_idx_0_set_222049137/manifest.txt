@@ -1,0 +1,6 @@
+159402796	data/polyvore_outfits/images/159402796.jpg
+200810877	data/polyvore_outfits/images/200810877.jpg
+208881110	data/polyvore_outfits/images/208881110.jpg
+208898299	data/polyvore_outfits/images/208898299.jpg
+176837161	data/polyvore_outfits/images/176837161.jpg
+203821549	data/polyvore_outfits/images/203821549.jpg
