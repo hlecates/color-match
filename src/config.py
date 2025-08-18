@@ -1,9 +1,3 @@
-#!/usr/bin/env python3
-"""
-Global configuration file for color-match project.
-All command line arguments are converted to constants here.
-"""
-
 from pathlib import Path
 
 # Base paths (relative to project root)
@@ -33,16 +27,6 @@ MAKE_PAIRS_CONFIG = {
 }
 
 # ============================================================================
-# prepare_masks.py configuration
-# ============================================================================
-PREPARE_MASKS_CONFIG = {
-    "images": "",               # ModaNet images dir
-    "ann": "",                  # instances_[train|val].json
-    "out_images": "",           # Output images directory
-    "out_masks": "",            # Output masks directory
-}
-
-# ============================================================================
 # preprocess_wb_shading.py configuration
 # ============================================================================
 PREPROCESS_WB_SHADING_CONFIG = {
@@ -68,7 +52,7 @@ SEGMENT_PAIRS_CONFIG = {
 # export_to_onnx.py configuration
 # ============================================================================
 EXPORT_TO_ONNX_CONFIG = {
-    "ckpt": "",                 # Checkpoint path
+    "ckpt": str(SEG_ARTIFACTS_DIR / "best.pt"),  # Checkpoint path (default to best.pt)
     "out": str(SEG_ARTIFACTS_DIR / "SEGMENTATION.onnx"),  # Output ONNX path
     "size": 384,                # Model input size
 }
@@ -77,11 +61,16 @@ EXPORT_TO_ONNX_CONFIG = {
 # segment/train.py configuration
 # ============================================================================
 SEGMENT_TRAIN_CONFIG = {
-    "images": "",                 # Path to images directory
-    "masks": "",                  # Path to masks directory
-    "epochs": 25,                 # Number of training epochs
-    "batch": 16,                  # Batch size
+    "images": "../../data/segment_data/images",                 # Path to images directory
+    "masks": "../../data/segment_data/masks",                  # Path to masks directory
+    "img_prefix": "img",          # Image file prefix
+    "mask_prefix": "seg",         # Mask file prefix
+    "ext": ".jpeg",               # File extension (comma-separated list, e.g. .jpeg,.jpg)
     "size": 384,                  # Input image size
+    "batch": 16,                  # Batch size
+    "epochs": 25,                 # Number of training epochs
     "lr": 2e-4,                   # Learning rate
     "out": str(SEG_ARTIFACTS_DIR), # Output directory for checkpoints
+    "seed": 42,                   # Random seed
+    "split_ratio": 0.9,           # Train/validation split ratio
 }
